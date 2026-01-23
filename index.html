@@ -8,18 +8,11 @@
     <script src="https://d3js.org/d3.v7.min.js"></script>
 </head>
 <body>
-    <div class="container">
-        <div class="header">
-            <h1>Parallel Coordinates Visualization</h1>
-            <div class="controls">
-                <button id="dataset-2012">Load CIS 2012</button>
-                <button id="dataset-2019">Load CIS 2019</button>
-            </div>
-        </div>
-        <div id="tooltip" class="tooltip"></div>
-        <div id="chart"></div>
+    <div id="controls">
+        <button id="btn2012">2012</button>
+        <button id="btn2019">2019</button>
     </div>
-
-    <script src="js/parallel-coordinates.js"></script>
+    <div id="my_dataviz"></div>
+    <script src="./js/parallel-coordinates.js"></script>
 </body>
 </html>
