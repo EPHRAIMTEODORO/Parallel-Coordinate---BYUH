@@ -1,19 +1,27 @@
 // set the dimensions and margins of the graph
 const margin = {top: 30, right: 10, bottom: 10, left: 0};
-const container = d3.select("#my_dataviz").node();
-const width = container.clientWidth - margin.left - margin.right;
-const height = container.clientHeight - margin.top - margin.bottom;
+
+// Store current CSV file for resize events
+let currentCsvFile = "./data/cis-2012.csv";
 
 // Function to load and visualize data
 function loadData(csvFile) {
+  // Store the current file for resize events
+  currentCsvFile = csvFile;
+  
   // Clear previous content
   d3.select("#my_dataviz").selectAll("svg").remove();
+  
+  // Get current container dimensions
+  const container = d3.select("#my_dataviz").node();
+  const width = container.clientWidth - margin.left - margin.right;
+  const height = container.clientHeight - margin.top - margin.bottom;
   
   // append the svg object to the body of the page
   const svg = d3.select("#my_dataviz")
   .append("svg")
-    .attr("width", width + margin.left + margin.right)
-    .attr("height", height + margin.top + margin.bottom)
+    .attr("viewBox", `0 0 ${width + margin.left + margin.right} ${height + margin.top + margin.bottom}`)
+    .attr("preserveAspectRatio", "xMidYMid meet")
   .append("g")
     .attr("transform",
           `translate(${margin.left},${margin.top})`);
@@ -100,3 +108,4 @@ document.getElementById("btn2012").addEventListener("click", function() {
 document.getElementById("btn2019").addEventListener("click", function() {
   loadData("./data/cis-2019.csv");
 });
+
