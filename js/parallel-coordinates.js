@@ -38,10 +38,8 @@ function loadData(csvFile) {
   // Parse the Data
   d3.csv(csvFile).then( function(data) {
 
-    // Extract all dimensions except species
-    dimensions = Object.keys(data[0]).filter(function(d) { 
-      return d.toLowerCase() !== "species"
-    })
+    // Extract all dimensions
+    dimensions = Object.keys(data[0])
 
     // For each dimension, I build a scale. I store all in a y object
     const y = {}
